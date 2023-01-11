@@ -139,3 +139,8 @@ wandb/
 nohup.out
 multirun
 outputs
+
+# tools related
+tools/Miniconda3*
+tools/venv
+tools/activate_python.sh
