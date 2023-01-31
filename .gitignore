@@ -144,3 +144,11 @@ outputs
 tools/Miniconda3*
 tools/venv
 tools/activate_python.sh
+tools/ArrayFire*
+tools/arrayfire
+tools/flashlight
+
+datas
+None
+lm_downloads
+models
