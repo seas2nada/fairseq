@@ -5,12 +5,11 @@ set -e
 set -u
 set -o pipefail
 
-data_dir=$PWD/datas/train_10m_1/
-# pretrained_model=$PWD/downloads/wav2vec_small.pt
-pretrained_model=$PWD/models/w2v2_base/checkpoint_l1_unst_pruned10.pt
+data_dir=$PWD/datas/train_10h/
+pretrained_model=$PWD/downloads/wav2vec_small.pt
 ngpu=1
 config_dir=$PWD/examples/wav2vec/config/finetuning
-config_name=base_10m
+config_name=base_10h
 
 #. ./path.sh || exit 1;
 #. utils/parse_options.sh || exit 1;
@@ -23,4 +22,4 @@ FAIRDIR=$PWD
 export PYTHONPATH=$PWD
 # export PYTHONPATH=$PYTHONPATH:$PWD/examples/wav2vec
 python $FAIRDIR/fairseq_cli/hydra_train.py -m --config-dir $FAIRDIR/examples/wav2vec/config/finetuning --config-name $config_name \
-	task.data=$data_dir model.w2v_path=$pretrained_model distributed_training.distributed_world_size=$ngpu optimization.update_freq="[8]"
+	task.data=$data_dir model.w2v_path=$pretrained_model distributed_training.distributed_world_size=$ngpu

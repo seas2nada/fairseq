@@ -1,7 +1,7 @@
 . ./tools/activate_python.sh
 
-db_dir=/DB/librispeech_finetuning/1h/6
-data_dir=$PWD/datas/train_10m_1/
+db_dir=/DB/librispeech_finetuning/1h
+data_dir=$PWD/datas/train_1h
 ext=flac
 valid=0.0
 

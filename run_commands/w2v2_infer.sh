@@ -7,8 +7,8 @@ set -o pipefail
 
 for subset in "dev_clean" "dev_other" "test_clean" "test_other"; do
     data_dir=$PWD/datas/$subset/
-    # finetuned_model=$PWD/models/w2v2_base_10m/0/checkpoints/checkpoint_best.pt
-    finetuned_model=$PWD/models/wav2vec_small_10m_converted.pt
+    finetuned_model=$PWD/models/w2v2_base_MPI_10m_1/0/checkpoints/checkpoint_l1_unst_pruned10.pt
+    # finetuned_model=$PWD/models/wav2vec_small_10m_converted.pt
     inference_result=$PWD/inference_result/
     wordscore=-1
     lmweight=2

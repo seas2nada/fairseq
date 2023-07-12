@@ -1,1 +1,1 @@
-data_prep_commands/prepare_libri_10m.sh
+data_prep_commands/prepare_libri_10h.sh

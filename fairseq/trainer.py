@@ -114,6 +114,11 @@ class Trainer(object):
         ):
             self._criterion = self._criterion.to(device=self.device)
             self._model = self._model.to(device=self.device)
+            
+            # seas2nada appended code
+            from seas2nada_utils.prune_MPI import move_weight_to_device
+            self._model = move_weight_to_device(model=self._model, device=self.device)
+
         self.pipeline_model_parallel = cfg.distributed_training.pipeline_model_parallel
         self.last_device = None
         if self.cuda and self.pipeline_model_parallel:

@@ -5,12 +5,11 @@ set -e
 set -u
 set -o pipefail
 
-data_dir=$PWD/datas/train_10m_1/
-# pretrained_model=$PWD/downloads/wav2vec_small.pt
-pretrained_model=$PWD/models/w2v2_base/checkpoint_l1_unst_pruned10.pt
+data_dir=$PWD/datas/train_1h/
+pretrained_model=$PWD/downloads/wav2vec_small.pt
 ngpu=1
 config_dir=$PWD/examples/wav2vec/config/finetuning
-config_name=base_10m
+config_name=base_1h
 
 #. ./path.sh || exit 1;
 #. utils/parse_options.sh || exit 1;
