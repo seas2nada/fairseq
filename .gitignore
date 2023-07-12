@@ -151,6 +151,6 @@ tools/flashlight
 datas
 None
 lm_downloads
-models
+trained_models
 inference_result
 inference_results
