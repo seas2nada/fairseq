@@ -223,8 +223,8 @@ class Wav2VecCtc(BaseFairseqModel):
         """Build a new model instance."""
         w2v_encoder = Wav2VecEncoder(cfg, len(task.target_dictionary))
 
-        from seas2nada_utils.prune_MPI import prune_MPI
-        w2v_encoder = prune_MPI(model=w2v_encoder)
+        # from seas2nada_utils.prune_MPI import prune_MPI, remove_pruning_buffers
+        # w2v_encoder = prune_MPI(model=w2v_encoder)
 
         return cls(cfg, w2v_encoder)
 

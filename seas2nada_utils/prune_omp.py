@@ -1,4 +1,4 @@
-# useage: python3 prune_omp.py trained_model save_model_name structured pruning_method 0.x
+# useage: python3 prune_omp.py finetuned trained_model save_model_name structured pruning_method 0.x
 
 import torch
 from torch.nn.utils import prune

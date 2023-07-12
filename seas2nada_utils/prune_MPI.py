@@ -144,3 +144,26 @@ def move_weight_to_device(model, device):
         module.weight = module.weight.half()
 
     return model
+
+def remove_pruning_buffers(model):
+    with torch.no_grad():
+        fe_modules = []
+        fe_modules += [model.w2v_model.feature_extractor.conv_layers[0][2]]
+        fe_modules += [model.w2v_model.feature_extractor.conv_layers[i][0] for i in range(7)]
+        fe_modules += [model.w2v_model.post_extract_proj]
+
+        enc_modules = [model.w2v_model.encoder.layers[i].self_attn.k_proj for i in range(12)]
+        enc_modules += [model.w2v_model.encoder.layers[i].self_attn.v_proj for i in range(12)]
+        enc_modules += [model.w2v_model.encoder.layers[i].self_attn.q_proj for i in range(12)]
+        enc_modules += [model.w2v_model.encoder.layers[i].self_attn.out_proj for i in range(12)]
+        enc_modules += [model.w2v_model.encoder.layers[i].self_attn_layer_norm for i in range(12)]
+        enc_modules += [model.w2v_model.encoder.layers[i].fc1 for i in range(12)]
+        enc_modules += [model.w2v_model.encoder.layers[i].fc2 for i in range(12)]
+        enc_modules += [model.w2v_model.encoder.layers[i].final_layer_norm for i in range(12)]
+        enc_modules += [model.w2v_model.encoder.layer_norm]
+        enc_modules += [model.w2v_model.layer_norm]
+
+        modules = fe_modules + enc_modules
+        parameters_to_prune = [(module, "weight") for module in modules]
+
+    return model
